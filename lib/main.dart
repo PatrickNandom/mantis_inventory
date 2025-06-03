@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mantis',
-      // home: LoginPage(),
-      home: Dashboard(),
+      home: LoginPage(),
+      // home: Dashboard(),
     );
   }
 }

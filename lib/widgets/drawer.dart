@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mantis_inventory/pages/customer_page/customers_page.dart';
 import 'package:mantis_inventory/pages/dashboard.dart';
-import 'package:mantis_inventory/pages/expenses_page.dart';
+import 'package:mantis_inventory/pages/expense_page.dart/expenses_page.dart';
 import 'package:mantis_inventory/pages/income_page/income_page.dart';
 
 class CustomDrawer extends StatelessWidget {
