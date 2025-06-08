@@ -51,7 +51,7 @@ class _ExpensesPageState extends State<ExpensesPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ExpensesCustomForm(),
+                          builder: (context) => ExpensesCustomForm(),
                         ),
                       );
                     },

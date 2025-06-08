@@ -43,7 +43,6 @@ class _DashboardState extends State<Dashboard> {
                     width: 720,
                     child: Column(
                       children: [
-                        // Header row
                         Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: Row(

@@ -11,6 +11,31 @@ class IncomeCustomForm extends StatefulWidget {
 }
 
 class _IncomeCustomFormState extends State<IncomeCustomForm> {
+  final _customerController = TextEditingController();
+
+  final _numberOfKgController = TextEditingController();
+
+  final _pricePerKgController = TextEditingController();
+
+  final _gradeController = TextEditingController();
+
+  final _categoryController = TextEditingController();
+
+  final _amountController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
+
+  dispos() {
+    _customerController.dispose();
+    _numberOfKgController.dispose();
+    _pricePerKgController.dispose();
+    _gradeController.dispose();
+    _categoryController.dispose();
+    _amountController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,70 +66,133 @@ class _IncomeCustomFormState extends State<IncomeCustomForm> {
                 ),
               ],
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomTextField(
-                  labelName: 'Customer Name',
-                  hintText: 'Enter Customer Name',
-                ),
-                SizedBox(height: 15),
-                CustomTextField(
-                  labelName: 'No of Kg',
-                  hintText: 'Enter number of Kg',
-                ),
-                SizedBox(height: 15),
-                CustomTextField(
-                  labelName: 'Price Per Kg',
-                  hintText: 'Enter price per kilk',
-                ),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomTextField(
+                    labelName: 'Customer Name',
+                    hintText: 'Enter Customer Name',
+                    controller: _customerController,
+                    validator: (value) {
+                      if (value == null || value!.isEmpty) {
+                        return 'Please provide custormer name!';
+                      }
 
-                SizedBox(height: 15),
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 15),
+                  CustomTextField(
+                    labelName: 'No of Kg',
+                    hintText: 'Enter number of Kg',
+                    controller: _numberOfKgController,
 
-                CustomTextField(labelName: 'Grade', hintText: 'eg 1 or 2'),
-                SizedBox(height: 15),
-                CustomTextField(labelName: 'Category', hintText: 'Eg Sales'),
+                    validator: (value) {
+                      if (value == null || value!.isEmpty) {
+                        return 'Please Enter No of Kg!';
+                      }
 
-                SizedBox(height: 15),
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 15),
+                  CustomTextField(
+                    labelName: 'Price Per Kg',
+                    hintText: 'Enter price per kilk',
+                    controller: _pricePerKgController,
 
-                CustomTextField(
-                  labelName: 'Amount',
-                  hintText: 'Search by Amount',
-                ),
+                    validator: (value) {
+                      if (value == null || value!.isEmpty) {
+                        return 'Please provide input for this field!';
+                      }
 
-                SizedBox(height: 15),
+                      return null;
+                    },
+                  ),
 
-                TextAndDatePickerColumn(displayText: 'Date From'),
+                  SizedBox(height: 15),
 
-                SizedBox(height: 15),
+                  CustomTextField(
+                    labelName: 'Grade',
+                    hintText: 'eg 1 or 2',
+                    controller: _gradeController,
 
-                TextAndDatePickerColumn(displayText: 'Date To'),
+                    validator: (value) {
+                      if (value == null || value!.isEmpty) {
+                        return 'please Enter grade!';
+                      }
 
-                SizedBox(height: 15),
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 15),
+                  CustomTextField(
+                    labelName: 'Category',
+                    hintText: 'Eg Sales',
+                    controller: _categoryController,
 
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => IncomePage()),
-                    );
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(12),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.blue,
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Save Record',
-                        style: TextStyle(color: Colors.white),
+                    validator: (value) {
+                      if (value == null || value!.isEmpty) {
+                        return 'please provide category field!';
+                      }
+
+                      return null;
+                    },
+                  ),
+
+                  SizedBox(height: 15),
+
+                  CustomTextField(
+                    labelName: 'Amount',
+                    hintText: 'Search by Amount',
+                    controller: _amountController,
+                    validator: (value) {
+                      if (value == null || value!.isEmpty) {
+                        return 'Amount is required!';
+                      }
+
+                      return null;
+                    },
+                  ),
+
+                  SizedBox(height: 15),
+
+                  TextAndDatePickerColumn(displayText: 'Date From'),
+
+                  SizedBox(height: 15),
+
+                  TextAndDatePickerColumn(displayText: 'Date To'),
+
+                  SizedBox(height: 15),
+
+                  InkWell(
+                    onTap: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => IncomePage()),
+                        );
+                      }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(12),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.blue,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Save Record',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

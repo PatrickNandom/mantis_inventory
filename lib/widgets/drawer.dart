@@ -12,63 +12,65 @@ class CustomDrawer extends StatelessWidget {
     return Drawer(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       backgroundColor: Colors.white,
-      child: Column(
-        children: [
-          DrawerHeader(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    Image.asset('assets/logo.png', height: 40, width: 40),
-                    SizedBox(width: 8),
-                    Text(
-                      'Mantis',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            DrawerHeader(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Image.asset('assets/logo.png', height: 40, width: 40),
+                      SizedBox(width: 8),
+                      Text(
+                        'Mantis',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Text('Dashboard'),
-              ],
+                    ],
+                  ),
+                  Text('Dashboard'),
+                ],
+              ),
             ),
-          ),
-          _buildMenuItem(Icons.access_time, 'Default', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => Dashboard()),
-            );
-          }),
-          ListTile(
-            title: Text('Farm Management', style: TextStyle(fontSize: 18)),
-          ),
-          _buildMenuItem(Icons.people, 'Customers', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => CustomersPage()),
-            );
-          }),
-          _buildMenuItem(Icons.attach_money, 'Income', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => IncomePage()),
-            );
-          }),
-          _buildMenuItem(Icons.language_sharp, 'Expenses', () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => ExpensesPage()),
-            );
-          }),
-          ListTile(title: Text('Reports', style: TextStyle(fontSize: 18))),
-          _buildMenuItem(Icons.settings, 'Sales Expenses', () {}),
-          ListTile(title: Text('Uploads', style: TextStyle(fontSize: 18))),
-          _buildMenuItem(Icons.settings, 'Upload Expenses', () {}),
-          _buildMenuItem(Icons.settings, 'Upload Income', () {}),
-        ],
+            _buildMenuItem(Icons.access_time, 'Default', () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => Dashboard()),
+              );
+            }),
+            ListTile(
+              title: Text('Farm Management', style: TextStyle(fontSize: 18)),
+            ),
+            _buildMenuItem(Icons.people, 'Customers', () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => CustomersPage()),
+              );
+            }),
+            _buildMenuItem(Icons.attach_money, 'Income', () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => IncomePage()),
+              );
+            }),
+            _buildMenuItem(Icons.language_sharp, 'Expenses', () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => ExpensesPage()),
+              );
+            }),
+            ListTile(title: Text('Reports', style: TextStyle(fontSize: 18))),
+            _buildMenuItem(Icons.settings, 'Sales Expenses', () {}),
+            ListTile(title: Text('Uploads', style: TextStyle(fontSize: 18))),
+            _buildMenuItem(Icons.settings, 'Upload Expenses', () {}),
+            _buildMenuItem(Icons.settings, 'Upload Income', () {}),
+          ],
+        ),
       ),
     );
   }

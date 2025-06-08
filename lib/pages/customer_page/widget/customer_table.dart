@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mantis_inventory/models/customers_model.dart';
 
 class CustomerTable extends StatelessWidget {
-  final List<Map<String, String>> customers;
+  // final List<Map<String, String>> customers;
+
+  final List<Customer> customers;
 
   const CustomerTable({super.key, required this.customers});
 
@@ -74,9 +77,8 @@ class CustomerTable extends StatelessWidget {
 
               const Divider(height: 1, color: Colors.black12),
 
-              // Data Rows (SCROLLABLE VERTICALLY)
               SizedBox(
-                height: 600, // you can adjust this height
+                height: 600,
                 child: ListView.separated(
                   itemCount: customers.length,
                   separatorBuilder: (_, __) =>
@@ -91,21 +93,15 @@ class CustomerTable extends StatelessWidget {
                       child: Row(
                         children: [
                           Expanded(flex: 1, child: Text('${index + 1}')),
+                          Expanded(flex: 2, child: Text(customer.name)),
+                          Expanded(flex: 3, child: Text(customer.email)),
                           Expanded(
                             flex: 2,
-                            child: Text(customer['name'] ?? ''),
-                          ),
-                          Expanded(
-                            flex: 3,
-                            child: Text(customer['email'] ?? ''),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Text(customer['type'] ?? ''),
+                            child: Text(customer.customerType),
                           ),
                           Expanded(
                             flex: 2,
-                            child: Text(customer['phone'] ?? ''),
+                            child: Text(customer.phoneNumber),
                           ),
                           Expanded(
                             flex: 2,

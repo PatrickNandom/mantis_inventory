@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mantis_inventory/pages/dashboard.dart';
 import 'package:mantis_inventory/pages/login_page.dart';
 
 void main() {
